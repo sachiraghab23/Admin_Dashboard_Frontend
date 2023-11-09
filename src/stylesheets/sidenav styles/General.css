@@ -1,0 +1,36 @@
+.product-input,
+.product-input-desc {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.product-input-desc {
+  height: 100%;
+}
+
+#category-dropdown {
+  width: 90%;
+  height: 30px;
+}
+
+.upload {
+  border: 1px dashed black;
+  width: 80%;
+  height: 80%;
+  background-image: url('../../assets/file-upload.jpg');
+  background-size: 100px;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  color: #0000;
+  display: block;
+}
+
+::-webkit-file-upload-button{
+  display: none;
+}

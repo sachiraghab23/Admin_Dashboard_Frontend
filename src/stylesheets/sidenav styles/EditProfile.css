@@ -1,0 +1,47 @@
+.display-picture{
+  background-color: aqua;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.action-img{
+  background-color: dodgerblue;
+  width: 200px;
+  height: 40px;
+  border:none;
+  border-radius: 10px;
+  margin-left: 10px;
+  color:white;
+  cursor:pointer;
+}
+
+.action-img:hover{
+  opacity: 0.8;
+}
+
+.uncolored{
+  background-color: transparent;
+  border: 0.5px solid #efefef;
+  color:black;
+}
+
+.uncolored:hover{
+  background-color: wheat;
+}
+
+.form-container{
+  margin-top: 20px;
+  margin-left: 10px;
+  display: flex;
+}
+
+.field-container{
+  margin-left: 10px;
+  width: fit-content;
+  margin-top: 10px;
+}
+
+.field-container input{
+  margin-top: 5px;
+}

@@ -1,0 +1,47 @@
+.login-container {
+  width: 70%;
+  height: fit-content;
+  padding: 10px;
+  background-color:darkcyan;
+  margin: auto;
+  display: flex;
+  box-shadow: 2px 2px 2px gray ;
+  justify-content: space-between;
+}
+
+.login-container > div{
+  width:500px;
+  height: 500px;
+  /* background-color: #fff; */
+  /* padding: 10px; */
+  margin: 5px;
+}
+
+.input-container{
+  padding-top: 20px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  background-color: #fff;
+}
+
+.input{
+  width: 70%;
+  padding-bottom: 20px;
+}
+
+.input + p{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.image-container img{
+  height: 100%;
+  width: 100%;
+}
+
+.manual-link{
+  color: blue;
+  text-decoration: underline;
+}

@@ -1,0 +1,10 @@
+.welcome-container {
+  width: 720px;
+  height: 225px;
+  background-color: #2bebcb;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  padding: 18px;
+}

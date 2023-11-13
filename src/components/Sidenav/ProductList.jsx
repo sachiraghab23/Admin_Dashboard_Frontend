@@ -1,58 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import './../../stylesheets/sidenav styles/ProductList.css';
 import { DataGrid } from '@mui/x-data-grid';
+import { searchContext } from './../../pages/Home';
 import { Box } from '@mui/material';
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'category', headerName: 'Category', width: 130 },
+  { field: 'name', headerName: 'Product name', width: 130 },
+  {
+    field: 'price',
+    headerName: 'Price',
+    type: 'number',
+    width: 90,
+  },
+  {
+    field: 'shipping',
+    headerName: 'Shipping',
+    description: 'This column has a value getter and is not sortable.',
+    // sortable: false,
+    width: 160,
+  },
+  {
+    field: 'quantity',
+    headerName: 'Quantity',
+    type: 'number',
+    width: 90,
+  },
+  {
+    field: 'unitsSold',
+    headerName: 'Units sold',
+    type: 'number',
+    width: 90,
+  },
+];
+/* var rows = [
+  { id: 1, category: 'Snow', name: 'Jon', price: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+]; */
 
 const ProductList = () => {
   const [category, setCategory] = useState('');
   const [rowData, setRowData] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
   var [temp, setTemp] = useState([]);
+  const [searchVariable, updateSearchVariable] = useContext(searchContext);
 
   // var payload = { category: age, };
-
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'category', headerName: 'Category', width: 130 },
-    { field: 'name', headerName: 'Product name', width: 130 },
-    {
-      field: 'price',
-      headerName: 'Price',
-      type: 'number',
-      width: 90,
-    },
-    {
-      field: 'shipping',
-      headerName: 'Shipping',
-      description: 'This column has a value getter and is not sortable.',
-      // sortable: false,
-      width: 160,
-    },
-    {
-      field: 'quantity',
-      headerName: 'Quantity',
-      type: 'number',
-      width: 90,
-    },
-    {
-      field: 'unitsSold',
-      headerName: 'Units sold',
-      type: 'number',
-      width: 90,
-    },
-  ];
-  /* var rows = [
-    { id: 1, category: 'Snow', name: 'Jon', price: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ]; */
 
   const handleChange = (e) => {
     setCategory(e.target.value);
@@ -68,11 +69,11 @@ const ProductList = () => {
     setRowData(arr);
   };
   const search = async () => {
-    console.log(searchValue);
+    // console.log(searchValue);
     setRowData(rowData.filter((elem) => {
-      return elem.name.toLowerCase().includes(searchValue) ||
-        elem.category.toLowerCase().includes(searchValue) ||
-        elem.id.toLowerCase().includes(searchValue);
+      return elem.name.toLowerCase().includes(searchVariable) ||
+        elem.category.toLowerCase().includes(searchVariable) ||
+        elem.id.toLowerCase().includes(searchVariable);
     }));
   };
   const getProductList = async () => {
@@ -86,22 +87,21 @@ const ProductList = () => {
     setTemp(arr);
     setRowData(arr);
   };
-  const getSearchItem = (e) => {
-    setSearchValue(e.target.value);
-  }
+
   useEffect(() => {
     getProductList();
-  }, []);
+    console.log(searchVariable);
+  }, [searchVariable]);
   useEffect(() => {
     filter();
   }, [category]);
   useEffect(() => {
-    if (searchValue !== "") {
+    if (searchVariable !== "") {
       search();
     } else {
       setRowData(temp);
     }
-  }, [searchValue]);
+  }, [searchVariable]);
 
   return (
     <div className='productlist-container'>
@@ -131,12 +131,11 @@ const ProductList = () => {
               <MenuItem value={"fashion"}>Fashion</MenuItem>
               <MenuItem value={"kitchen"}>Kitchen</MenuItem>
             </Select>
-            <input type="text" onChange={getSearchItem} />
             <FormHelperText></FormHelperText>
           </FormControl>
           <div className="search-box">
             <input type="text" placeholder='Search..' />
-            <button>{Search}</button>
+            <button>search</button>
           </div>
           <div style={{ height: 600, width: '90%', marginLeft: '10px' }}>
             <DataGrid

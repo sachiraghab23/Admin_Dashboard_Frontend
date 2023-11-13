@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './../stylesheets/Header.css';
 import { Badge } from '@mui/material-next';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import searchContext from './../pages/Home';
 // import { isExpired, decodeToken } from 'react-jwt';
 
 const Header = (props) => {
-  // useEffect(() => {
-  //   var token = localStorage.getItem('token');
-  //   setDecodedData(decodeToken(token));
-  // }, []);
+  const { searchVariable, updateSearchVariable } = useContext(searchContext);
+  const handleChange = (e) => {
+    updateSearchVariable(e.target.value);
+  }
+  useEffect(() => {
+    // var token = localStorage.getItem('token');
+    // setDecodedData(decodeToken(token));
+    console.log(searchVariable);
+  }, []);
   return (
     <>
       <header>
         <div className='heading-name'><h2>My heading</h2></div>
-        <input type="text" name="search" id="search-input" placeholder='🔍 search' />
+        <input type="text" name="search" id="search-input" placeholder='🔍 search' onChange={handleChange} />
         <div className="user-details">
           <div className="notification">
             <Badge color="primary" badgeContent={1}>

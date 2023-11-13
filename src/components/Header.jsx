@@ -2,9 +2,13 @@ import React from 'react'
 import './../stylesheets/Header.css';
 import { Badge } from '@mui/material-next';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+// import { isExpired, decodeToken } from 'react-jwt';
 
-const Header = () => {
-  let name = 'Sachin tichkule';
+const Header = (props) => {
+  // useEffect(() => {
+  //   var token = localStorage.getItem('token');
+  //   setDecodedData(decodeToken(token));
+  // }, []);
   return (
     <>
       <header>
@@ -12,12 +16,14 @@ const Header = () => {
         <input type="text" name="search" id="search-input" placeholder='🔍 search' />
         <div className="user-details">
           <div className="notification">
-          <Badge color="primary" badgeContent={1}>
-            <NotificationsIcon/>
+            <Badge color="primary" badgeContent={1}>
+              <NotificationsIcon />
             </Badge>
-            </div>
-          <div className="user-name">{name}</div>
-          <div className="dp"></div>
+          </div>
+          <div className="user-name">{props?.state.Fullname}</div>
+          <div className="dp">
+            <img src={props?.state.avatar} />
+          </div>
         </div>
       </header>
     </>

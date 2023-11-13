@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Sidenav = () => {
+  const navigate = useNavigate();
   return (
     <>
       <ul>
@@ -19,7 +20,11 @@ const Sidenav = () => {
         </Link>             
         <Link to="/addproduct">
           <li>Add Product</li>
-        </Link>             
+        </Link>
+        <button onClick={() => {
+          localStorage.removeItem('token');
+          navigate('/');
+        }}>sign out</button>
       </ul>
     </>
   )

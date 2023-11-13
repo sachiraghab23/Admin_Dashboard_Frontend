@@ -8,6 +8,7 @@ import Histogram from '../dashboard/Histogram';
 
 const Dashboard = () => {
   let arr = [1, 2, 3];
+  
   return (
     <>      
       {/* display section */}

@@ -5,8 +5,14 @@ import { Box, Button, Tab, Tabs, TextField } from "@mui/material";
 import { TabList, TabContext, TabPanel } from '@mui/lab';
 import './../../stylesheets/sidenav styles/Account.css';
 
-const Account = () => {
+const Account = (props) => {
   const [value, setValue] = useState("1");
+  // var [decodedData, setDecodedData] = useState({});
+  // useEffect(() => {
+  //   localStorage.removeItem('token');
+  //   var token = localStorage.getItem('token');
+  //   setDecodedData(decodeToken(token));
+  // }, []);
   const handleChange = (e, num) => {
     setValue(num);
   };
@@ -35,14 +41,13 @@ const Account = () => {
             <Tab label="Change password" value="2" />
           </TabList>
           <TabPanel value="1" style={{ width: '80%' }}>
-            <EditProfile />
+            <EditProfile state={props?.state.data} />
           </TabPanel>
           <TabPanel value="2">
             <ChangePassword />
           </TabPanel>
         </TabContext>
       </Box>
-
     </>
   )
 }

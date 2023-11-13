@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   TextField, Checkbox, Button, FormControlLabel
 } from '@mui/material';
-import { isExpired, decodedToken } from 'react-jwt'
+import { isExpired, decodeToken } from 'react-jwt'
 
 const Login = ({ setState }) => {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
@@ -21,7 +21,7 @@ const Login = ({ setState }) => {
   const login = async () => {
     var response = await axios.post('http://localhost:8080/login', loginData);
     console.log(response);
-    var decodedData = decodedToken(response.data);
+    var decodedData = decodeToken(response.data);
     console.log(decodedData);
     setState(response.data);
     navigate('/');

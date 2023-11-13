@@ -9,7 +9,7 @@ header {
   justify-content: right;
 }
 
-.search-input{
+.search-input {
   width: 80%;
   border: 1px solid grey;
   border-radius: 54px;
@@ -20,12 +20,12 @@ header {
   float: left;
 }
 
-.heading-name{
-    width: 601px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 23px;
+.heading-name {
+  width: 601px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 23px;
 }
 
 .user-details {
@@ -51,12 +51,11 @@ header {
   width: 30px;
 }
 
-.dp {
+.dp img {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-image: url('./../assets/user-avatar.jpg');
   background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0px -10px;
+  background-repeat: no-repeat;
+  background-position: 0px -10px;
 }

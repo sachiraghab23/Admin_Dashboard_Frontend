@@ -1,0 +1,14 @@
+.action-img{
+  background-color: dodgerblue;
+  width: 200px;
+  height: 40px;
+  border:none;
+  border-radius: 10px;
+  margin-left: 10px;
+  color:white;
+  cursor:pointer;
+}
+
+.action-img:hover{
+  opacity: 0.8;
+}

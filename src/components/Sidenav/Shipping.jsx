@@ -1,7 +1,12 @@
 import React from 'react'
 import { Box, InputLabel } from '@mui/material';
 
-const Shipping = () => {
+const Shipping = ({ setProductData }) => {
+  const handleChange = (e) => {
+    setProductData((prevState) => (
+      { ...prevState, [e.target.name]: e.target.value }
+    ));
+  };
   return (
     <>
       <Box
@@ -16,23 +21,13 @@ const Shipping = () => {
       >
         <h3>Shipping</h3>
         <InputLabel><span style={{ color: "red" }}>*</span>Width</InputLabel>
-        <input type='number' className='product-input' placeholder='width'></input>
+        <input type='number' className='product-input' placeholder='width' name='width'></input>
         <InputLabel><span style={{ color: "red" }}>*</span>Height</InputLabel>
-        <input type='number' className='product-input' placeholder='height'></input>
+        <input type='number' className='product-input' placeholder='height' name="height"></input>
         <InputLabel><span style={{ color: "red" }}>*</span>Weight</InputLabel>
-        <input type='number' className='product-input' placeholder='weight'></input>
+        <input type='number' className='product-input' placeholder='weight' name='weight'></input>
         <InputLabel><span style={{ color: "red" }}>*</span>Shipping fees</InputLabel>
-        <input type='number' className='product-input' placeholder='$ '></input>
-
-
-        <InputLabel><span style={{ color: "red" }}>*</span>Price</InputLabel>
-        <input type='number' className='product-input' placeholder='$ price'></input>
-        <InputLabel><span style={{ color: "red" }}>*</span>Product Description</InputLabel>
-        <input type='text' className='product-input-desc' placeholder='Describe your product'></input>
-        <InputLabel><span style={{ color: "red" }}>*</span>Category</InputLabel>
-        <select name="" id="category-dropdown">
-          <option value="Electronics">ele</option>
-        </select>
+        <input type='number' className='product-input' placeholder='$ ' name='shipping' onClick={handleChange}></input>
       </Box>
     </>
   )

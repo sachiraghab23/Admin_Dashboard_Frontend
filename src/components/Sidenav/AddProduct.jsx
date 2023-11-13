@@ -3,12 +3,17 @@ import { Box, Tab } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import General from './General';
 import Shipping from './Shipping';
-// import './../../stylesheets/sidenav styles/AddProduct.css';
+import axios from 'axios';
+import './../../stylesheets/sidenav styles/AddProduct.css';
 
 const AddProduct = () => {
   const [value, setValue] = useState(0);
+  const [productData, setProductData] = useState({});
   const handleChange = (e, num) => {
     setValue(num);
+  }
+  const addProductAPI = async () => {
+    const resp = await axios.post('http://localhost:8080/addproduct', productData);
   }
   return (
     <div className='productlist-container'>
@@ -20,10 +25,12 @@ const AddProduct = () => {
             <Tab label="Shipping" value='2' />
           </TabList>
         </Box>
+        <TabPanel value="1"><General setState={{ setValue, setProductData }} /></TabPanel>
+        <TabPanel value="2"><Shipping setState={{ setProductData }} /></TabPanel>
       </TabContext>
-      <TabPanel value="1"><General /></TabPanel>
-      <TabPanel value="3"><Shipping /></TabPanel>
+      <button className="action-img" onClick={addProductAPI}>Add product</button>
     </div>
+
   )
 }
 
